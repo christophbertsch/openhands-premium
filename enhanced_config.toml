@@ -1,0 +1,179 @@
+###################### OpenHands Premium Configuration ######################
+# This configuration provides the highest quality experience matching
+# the All-Hands free trial with enhanced features and optimizations
+##############################################################################
+
+[core]
+# Workspace and storage configuration
+workspace_base = "~/openhands-workspace"
+cache_dir = "~/.cache/openhands"
+file_store_path = "~/.openhands/file_store"
+save_trajectory_path = "~/.openhands/trajectories"
+
+# Performance and quality settings
+max_iterations = 2000
+max_budget_per_task = 20.0
+enable_browser = true
+run_as_openhands = true
+runtime = "docker"
+default_agent = "CodeActAgent"
+
+# Advanced features
+debug = false
+save_screenshots_in_trajectory = true
+enable_default_condenser = true
+max_concurrent_conversations = 10
+conversation_max_age_seconds = 172800  # 48 hours
+
+# File handling with generous limits
+file_store = "local"
+file_uploads_max_file_size_mb = 500
+file_uploads_restrict_file_types = false
+file_uploads_allowed_extensions = [".*"]
+
+# Security settings
+jwt_secret = "your-secure-jwt-secret-here"
+
+[llm]
+# Primary LLM - GPT-4o for best balance of quality and speed
+model = "gpt-4o"
+api_key = ""
+temperature = 0.1
+max_input_tokens = 128000
+max_output_tokens = 8192
+num_retries = 8
+retry_max_wait = 120
+retry_min_wait = 15
+retry_multiplier = 2.0
+caching_prompt = true
+native_tool_calling = false
+drop_params = false
+modify_params = true
+disable_vision = false
+
+[llm.claude-sonnet]
+# Premium option - Claude Sonnet for highest quality
+model = "anthropic/claude-3-5-sonnet-20241022"
+api_key = ""
+temperature = 0.1
+max_input_tokens = 200000
+max_output_tokens = 8192
+num_retries = 8
+caching_prompt = true
+
+[llm.gpt4o-mini]
+# Cost-effective option for less critical tasks
+model = "gpt-4o-mini"
+api_key = ""
+temperature = 0.1
+max_input_tokens = 128000
+max_output_tokens = 4096
+
+[llm.o1-preview]
+# Advanced reasoning model for complex problems
+model = "o1-preview"
+api_key = ""
+reasoning_effort = "high"
+max_input_tokens = 128000
+max_output_tokens = 32768
+
+[llm.condenser]
+# Dedicated model for conversation condensing
+model = "gpt-4o-mini"
+api_key = ""
+temperature = 0.1
+max_input_tokens = 8192
+max_output_tokens = 2048
+
+[agent]
+# Enable all premium features
+enable_browsing = true
+enable_llm_editor = true
+enable_editor = true
+enable_jupyter = true
+enable_cmd = true
+enable_think = true
+enable_finish = true
+enable_history_truncation = true
+enable_condensation_request = true
+enable_prompt_extensions = true
+
+# No disabled microagents - use all available
+disabled_microagents = []
+
+[agent.CodeActAgent]
+# Primary agent with premium LLM
+llm_config = "claude-sonnet"
+
+[agent.ReasoningAgent]
+# Specialized agent for complex reasoning tasks
+llm_config = "o1-preview"
+
+[agent.CostEffectiveAgent]
+# Budget-conscious agent for simple tasks
+llm_config = "gpt4o-mini"
+
+[sandbox]
+# Premium runtime configuration
+timeout = 600  # 10 minutes for complex tasks
+user_id = 1000
+base_container_image = "docker.all-hands.dev/all-hands-ai/runtime:0.50-nikolaik"
+runtime_container_image = "docker.all-hands.dev/all-hands-ai/runtime:0.50-nikolaik"
+
+# Network and performance settings
+use_host_network = false
+enable_auto_lint = true
+initialize_plugins = true
+keep_runtime_alive = true
+pause_closed_runtimes = true
+close_delay = 1800  # 30 minutes
+rm_all_containers = false
+
+# GPU support (enable if available)
+enable_gpu = false
+# cuda_visible_devices = "0"
+
+# Advanced runtime settings
+runtime_extra_build_args = ["--network=host", "--add-host=host.docker.internal:host-gateway"]
+runtime_startup_env_vars = {
+    "PYTHONUNBUFFERED" = "1",
+    "PYTHONDONTWRITEBYTECODE" = "1",
+    "PIP_NO_CACHE_DIR" = "1",
+    "NODE_ENV" = "production"
+}
+
+# Volume mounts for enhanced functionality
+# volumes = "/usr/local/bin:/usr/local/bin:ro,/opt/tools:/opt/tools:ro"
+
+[security]
+# Security configuration
+confirmation_mode = false
+enable_security_analyzer = true
+security_analyzer = "default"
+
+[condenser]
+# Advanced conversation management
+type = "llm_attention"
+llm_config = "condenser"
+keep_first = 3
+max_size = 200
+attention_window = 150
+
+[kubernetes]
+# Kubernetes configuration (if using K8s runtime)
+namespace = "openhands"
+ingress_domain = "localhost"
+pvc_storage_size = "10Gi"
+pvc_storage_class = "fast-ssd"
+resource_cpu_request = "2"
+resource_memory_request = "4Gi"
+resource_memory_limit = "8Gi"
+privileged = false
+
+# Custom evaluation settings
+[eval]
+# Evaluation configuration for quality assessment
+enable_evaluation = true
+evaluation_model = "gpt-4o"
+quality_threshold = 0.85
+performance_tracking = true
