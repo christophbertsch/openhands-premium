@@ -73,7 +73,7 @@ git remote add origin "https://$USERNAME:$GITHUB_TOKEN@github.com/$USERNAME/$REP
 
 # Push to GitHub
 echo -e "${YELLOW}Pushing to GitHub...${NC}"
-git push -u origin master --force
+git push -u origin main --force
 
 echo -e "${GREEN}✅ Repository setup completed!${NC}"
 echo -e "${BLUE}Repository URL: https://github.com/$USERNAME/$REPO_NAME${NC}"
