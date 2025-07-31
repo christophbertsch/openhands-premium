@@ -26,10 +26,14 @@ Here are ALL the files you need to copy to your local machine:
 15. **create_github_repo.sh** - GitHub repository creation
 16. **download_setup.sh** - Package creation script
 17. **get-docker.sh** - Docker installation script
-18. **scripts/install_dependencies.sh** - Dependency installer
+18. **setup_api_keys.sh** - API key configuration script
+19. **start_openhands.sh** - OpenHands startup script
+20. **manage_openhands.sh** - OpenHands management script
+21. **qa_openhands.sh** - Quality assurance checks
+22. **scripts/install_dependencies.sh** - Dependency installer
 
 ### Optional Files
-19. **.vscode/settings.json** - VS Code settings (if you use VS Code)
+23. **.vscode/settings.json** - VS Code settings (if you use VS Code)
 
 ## 📁 Directory Structure to Create
 
@@ -52,6 +56,10 @@ openhands-premium-setup/
 ├── create_github_repo.sh
 ├── download_setup.sh
 ├── get-docker.sh
+├── setup_api_keys.sh
+├── start_openhands.sh
+├── manage_openhands.sh
+├── qa_openhands.sh
 ├── scripts/
 │   └── install_dependencies.sh
 └── .vscode/
@@ -84,68 +92,63 @@ export GITHUB_TOKEN="your_github_token_here"
 ./create_github_repo.sh
 ```
 
-## 📝 Files You Already Have ✅
+## 📝 Files Now Available ✅
 
-You mentioned you already copied these:
+All files are now present in this repository:
 - ✅ README.md
 - ✅ setup_openhands.sh
 - ✅ enhanced_config.toml
 - ✅ quality_agents.py
 - ✅ advanced_microagents.py
 - ✅ deployment_script.py
-- ✅ web_enhancements.js
+- ✅ web_enhancements.js (enhanced with new features)
 - ✅ create_github_repo.sh
 - ✅ QUICK_START.md
 - ✅ LICENSE
 - ✅ .gitignore
 - ✅ scripts/install_dependencies.sh
+- ✅ **OPENHANDS_PREMIUM_GUIDE.md** (Comprehensive guide)
+- ✅ **complete_setup.py** (Updated version)
+- ✅ **download_setup.sh** (Package creation)
+- ✅ **get-docker.sh** (Docker installer)
+- ✅ **COPY_TO_LOCAL.md** (Copy instructions)
+- ✅ **COMPLETE_FILE_LIST.md** (This file)
+- ✅ **setup_api_keys.sh** (API key configuration)
+- ✅ **start_openhands.sh** (OpenHands startup)
+- ✅ **manage_openhands.sh** (OpenHands management)
+- ✅ **qa_openhands.sh** (Quality assurance)
+- ✅ **.vscode/settings.json** (VS Code settings)
 
-## 📝 Additional Files You Need ⚠️
-
-You still need to copy these:
-- ❌ **OPENHANDS_PREMIUM_GUIDE.md** (Comprehensive guide)
-- ❌ **complete_setup.py** (Updated version)
-- ❌ **download_setup.sh** (Package creation)
-- ❌ **get-docker.sh** (Docker installer)
-- ❌ **COPY_TO_LOCAL.md** (Copy instructions)
-- ❌ **COMPLETE_FILE_LIST.md** (This file)
-- ❌ **.vscode/settings.json** (Optional VS Code settings)
-
-## 🎯 Priority Files to Copy Next
-
-**High Priority:**
-1. **OPENHANDS_PREMIUM_GUIDE.md** - Essential user guide
-2. **complete_setup.py** - Updated setup orchestrator
-
-**Medium Priority:**
-3. **download_setup.sh** - Useful for packaging
-4. **get-docker.sh** - Docker installation helper
-
-**Low Priority:**
-5. **COPY_TO_LOCAL.md** - Instructions (you already know this)
-6. **COMPLETE_FILE_LIST.md** - This file (for reference)
-7. **.vscode/settings.json** - Only if you use VS Code
-
-## 🔧 After Getting All Files
+## 🔧 Using the Complete Setup
 
 1. **Make executable:**
    ```bash
    chmod +x *.sh *.py scripts/*.sh
    ```
 
-2. **Test the setup:**
+2. **Configure API keys:**
+   ```bash
+   ./setup_api_keys.sh
+   ```
+
+3. **Test the setup:**
    ```bash
    ./setup_openhands.sh --help
    ```
 
-3. **Create GitHub repo:**
+4. **Start OpenHands:**
    ```bash
-   ./create_github_repo.sh
+   ./start_openhands.sh
    ```
 
-4. **Start using:**
+5. **Manage OpenHands:**
    ```bash
-   ./setup_openhands.sh
+   ./manage_openhands.sh help
+   ```
+
+6. **Run quality checks:**
+   ```bash
+   ./qa_openhands.sh
    ```
 
 You'll have a complete premium OpenHands setup that matches the All-Hands free trial quality! 🚀
